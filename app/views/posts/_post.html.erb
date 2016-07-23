@@ -1,0 +1,7 @@
+<p>
+	<%= link_to(post.title_and_author, post) %>
+	<% if post.user == current_user %>
+		<%= edit_post_link(post) %>
+		<%= link_to('Delete', post, method: :delete) %>
+	<% end %>
+</p>
