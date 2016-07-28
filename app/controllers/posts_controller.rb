@@ -4,9 +4,9 @@ class PostsController < ApplicationController
 	def index
 		@posts = Post.all
 		if params[:search]
-    		@posts = Post.search(params[:search]).order("created_at DESC")
+    		@posts = Post.search(params[:search]).order("posts.created_at DESC")
   		else
-    		@posts = Post.all.order('created_at DESC')
+    		@posts = Post.all.order('posts.created_at DESC')
   		end
 	end
 
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
 	def update
 		find_post_by_current_user
 		@post.update(post_params)
-		redirect_to_post_and_set_flash("Successfully updated post #{@post.id}")
+		redirect_to_post_and_set_flash("Successfully updated #{@post.title}")
 	end
 
 	def destroy

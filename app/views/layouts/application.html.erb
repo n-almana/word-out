@@ -8,25 +8,40 @@
 </head>
 <body>
 
-	<header>
-		<ul>
-			<li><%= link_to('All Posts', posts_url) %></li>
-			<li><%= link_to('Posts by Followed Users', following_posts_url) %></li>
-			<li><%= link_to('Users', users_url) %></li>
-			<li><%= link_to('New Post', new_post_url) %></li>
-			<% if user_signed_in? %>
-				<li>You are signed in as <%= current_user.email %></li>
-				<li><%= link_to('Sign Out', destroy_user_session_url, method: :delete) %></li>
-			<% else %>
-				<li>You are not signed in</li>
-				<li><%= link_to('Sign In', new_user_session_url) %></li>
-			<% end %>
-		</ul>
+	<header class="navbar navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<%= link_to "Word Out", '#', id: "logo" %>
+			<nav> 
+				<ul class="nav navbar-nav pull-right">
+					<li><%= link_to('All Poems', posts_url) %></li>
+					<li><%= link_to('Poems by Followed Poets', following_posts_url) %></li>
+					<li><%= link_to('Poets', users_url) %></li>
+						<% if user_signed_in? %>
+							<li id="fat-menu" class="dropdown">
+            					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              						Account <b class="caret"></b>
+            					</a>
+            					<ul class="dropdown-menu">
+									<li><%= link_to "Profile", current_user %></li> 
+									<li><%= link_to('New Poem', new_post_url) %></li>
+									<li><%= link_to "Settings", '#' %></li>
+									<li class="divider"></li>
+									<li><%= link_to('Sign Out', destroy_user_session_url, method: :delete) %></li>
+								</ul>
+						<% else %>
+							<li><%= link_to('Sign In', new_user_session_url) %></li>
+						<% end %>
+				</ul>
+			</nav> 
+		</div> 
 	</header>
+	<div class='container'> 
 
-	<div class="flash-message"><%= flash[:info] %></div>
+		<div class="flash-message"><%= flash[:info] %></div>
 
-<%= yield %>
+		<%= yield %>
+
+	</div> 
 
 </body>
 </html>

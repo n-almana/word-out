@@ -1,5 +1,3 @@
-<h1>Post Details</h1>
-<p>This is post #<%= @post.id %></p>
-<p> The title is <%= @post.title %></p>
-<p><%= @post.text %></p>
+<h1><%= @post.title %></h1>
+<p><%= simple_format(@post.text) %></p>
 

@@ -8,8 +8,11 @@ class Post < ActiveRecord::Base
 	end
 
 	def self.search(search)
-  		where("title LIKE ?", "%#{search}%") 
-  		where("text LIKE ?", "%#{search}%")
+		search = "%#{search}%"
+
+  		includes(:user).
+  		references(:user).
+  		where("posts.title LIKE ? OR posts.text LIKE ? OR users.email LIKE ?", search, search, search) 
 	end
 
 end

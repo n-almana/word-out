@@ -1,14 +1,18 @@
-<h1> All posts </h1> 
+<div id = "title"> 
+	<h1> All Poems </h1> 
+</div> 
+<div id="search-bar"> 
+	<%= form_tag(posts_path, :method => "get", id: "search-form") do %>
+	<%= text_field_tag :search, params[:search], placeholder: "Search" %>
+	<%= submit_tag "Search" %>
+	<% end %>
+</div> 
 
-<%= form_tag(posts_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search" %>
-<%= submit_tag "Search" %>
-<% end %>
+<div id="main"> 
+	<% if @posts.present? %>
+	  <%= render @posts %>
+	<% else %>
+	  <p>There are no poems or poets containing the term(s) <%= params[:search] %>.</p>
+	<% end %>
+</div> 
 
-<% if @posts.present? %>
-  <%= render @posts %>
-<% else %>
-  <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
-<% end %>
-
-<%= render(@posts) %>
