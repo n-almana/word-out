@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
 	validates_presence_of(:text, :title) 
 
 	def title_and_author
-		"#{title} by #{user.email}"
+		"#{title} by #{user.displayname}"
 	end
 
 	def self.search(search)
@@ -12,7 +12,7 @@ class Post < ActiveRecord::Base
 
   		includes(:user).
   		references(:user).
-  		where("posts.title LIKE ? OR posts.text LIKE ? OR users.email LIKE ?", search, search, search) 
+  		where("posts.title LIKE ? OR posts.text LIKE ? OR users.displayname LIKE ?", search, search, search) 
 	end
 
 end

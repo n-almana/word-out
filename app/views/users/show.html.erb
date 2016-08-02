@@ -1,4 +1,7 @@
 <h1> Profile </h1> 
-<h2><%= @user.email %></h2>
+<h2><%= @user.displayname %></h2>
 <h3> Poems </h3> 
+<p> You have <%= @user.posts.count %> poems </p> 
 <%= render(@user.posts) %>
+
+<p> Your name is: <%= @user.displayname %> </p> 

@@ -49,6 +49,5 @@ gem 'devise'
 
 gem 'bootstrap-sass'
 
-
-
+gem 'paperclip', '~> 4.2'
 

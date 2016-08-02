@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-    has_many(:posts)
+    has_many(:posts, dependent: :destroy)
 
     has_many(:follows, foreign_key: :following_user_id)
 	has_many(:followed_users, through: :follows, class_name: 'User')
@@ -24,5 +24,6 @@ class User < ActiveRecord::Base
     def self.search(search)
       where("email LIKE ?", "%#{search}%") 
   end
+
 
 end
