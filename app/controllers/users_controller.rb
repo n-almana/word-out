@@ -11,4 +11,10 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 	end
+
+	def destroy
+		current_user.destroy
+		redirect_to(posts_url)
+		set_flash('Your account was successfully deleted')
+	end
 end

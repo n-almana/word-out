@@ -6,10 +6,15 @@ Rails.application.routes.draw do
 
     resources(:posts) do
     get(:following, on: :collection)
+      member do
+      put "heart", to: "posts#heart"
+      put "unheart", to: "posts#unheart"
+    end 
   end
 
   resources(:users)
   resources(:follows)
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

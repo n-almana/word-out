@@ -24,13 +24,15 @@
             					<ul class="dropdown-menu">
 									<li><%= link_to "Profile", current_user %></li> 
 									<li><%= link_to('New Poem', new_post_url) %></li>
-									<li><%= link_to "Settings", '#' %></li>
+									<li><%= link_to "Edit Profile", edit_user_registration_path %></li>
 									<li class="divider"></li>
 									<li><%= link_to('Sign Out', destroy_user_session_url, method: :delete) %></li>
 								</ul>
+								<li class="round-image-50"><%= image_tag(current_user.avatar.url(:thumb)) %></li>
 						<% else %>
 							<li><%= link_to('Sign In', new_user_session_url) %></li>
 						<% end %>
+						
 				</ul>
 			</nav> 
 		</div> 

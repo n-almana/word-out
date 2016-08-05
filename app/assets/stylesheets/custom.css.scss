@@ -40,3 +40,52 @@ textarea {
 #search-bar {
 	float: right;
 }
+
+.round-image-50 {
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    text-align: center;
+    img { width: 100% }
+}
+
+#right {
+  float: right;
+}
+
+#pic {
+  float: left;
+  border-radius: 30px;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    text-align: center;
+    img { width: 100% }
+    margin-right: 15px;
+}
+
+li {
+  list-style: none;
+}
+
+#indexlist {
+  padding-bottom: 30px;
+}
+
+#follow-button {
+  padding-bottom: 20px;
+}
+
+#stats {
+  padding-top: 10px;
+  text-align: center;
+}
+
+h3 {
+  padding-bottom: 15px;
+}

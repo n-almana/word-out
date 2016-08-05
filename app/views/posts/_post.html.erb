@@ -1,7 +1,12 @@
-<p>
-	<%= link_to(post.title_and_author, post) %>
+<ul id="indexlist"> 
+	<li id="pic"> 
+    	<%= image_tag(post.user.avatar.url(:thumb)) %>
+	</li> 
+	<li> <%= link_to(post.title_and_author, post) %>
 	<% if post.user == current_user %>
 		<%= edit_post_link(post) %>
 		<%= link_to('Delete', post, method: :delete) %>
 	<% end %>
-</p>
+	</li>
+</ul> 
+

@@ -4,9 +4,9 @@ class PostsController < ApplicationController
 	def index
 		@posts = Post.all
 		if params[:search]
-    		@posts = Post.search(params[:search]).order("posts.created_at DESC")
+    		@posts = Post.search(params[:search]).order("posts.cached_votes_up DESC")
   		else
-    		@posts = Post.all.order('posts.created_at DESC')
+    		@posts = Post.all.order('posts.cached_votes_up DESC')
   		end
 	end
 
@@ -43,6 +43,18 @@ class PostsController < ApplicationController
 	def following
 		@posts = current_user.followed_posts
 	end
+
+	def heart 
+		find_post
+		@post.upvote_by current_user
+		redirect_to_post_and_set_flash("You just hearted #{@post.title}")
+	end 
+
+	def unheart 
+		find_post
+		@post.downvote_by current_user
+		redirect_to_post_and_set_flash("You just unhearted #{@post.title}")
+	end 
 
 	private
 

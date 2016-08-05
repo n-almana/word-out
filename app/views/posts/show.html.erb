@@ -2,3 +2,14 @@
 <p><%= simple_format(@post.text) %></p>
 
 <p> By: <%= @post.user.displayname %> </p> 
+<p> 
+<% if current_user.liked?(@post) %>
+		<%= button_to('Un-Heart', unheart_post_path(@post), method: :put) %>
+      <% else %>
+        <%= button_to('Heart', heart_post_path(@post), method: :put) %>
+      <% end %>
+</p> 
+<p> This poem has <%= @post.get_upvotes.size %> hearts! </p> 
+<p> 
+<%= link_to "Back", :back %>
+</p> 

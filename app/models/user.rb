@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  acts_as_voter
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -9,9 +11,15 @@ class User < ActiveRecord::Base
     has_many(:follows, foreign_key: :following_user_id)
 	has_many(:followed_users, through: :follows, class_name: 'User')
 
+      has_many(:followings, foreign_key: :followed_user_id, class_name: "Follow")
+  has_many(:following_users, through: :followings, class_name: 'User')
+
 	has_many(:followed_posts, through: :followed_users, source: :posts)
 
   after_create(:send_welcome_email)
+
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/assets/:style/missing.png"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/ 
 
   def send_welcome_email 
     WelcomeMailer.welcome_email(self).deliver
@@ -24,6 +32,5 @@ class User < ActiveRecord::Base
     def self.search(search)
       where("email LIKE ?", "%#{search}%") 
   end
-
 
 end
