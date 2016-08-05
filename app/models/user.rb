@@ -18,8 +18,19 @@ class User < ActiveRecord::Base
 
   after_create(:send_welcome_email)
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/assets/:style/missing.png"
+  has_attached_file :avatar, 
+        :styles => { :medium => "300x300>", :thumb => "100x100#" }, 
+        :default_url => "/assets/:style/missing.png", 
+        :storage => :s3,   
+        :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
+
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/ 
+
+def s3_credentials     
+  {:bucket => "wordoutbucket",     
+    :access_key_id => "AKIAJRN4NDNRXO4JX54Q",     
+    :secret_access_key => "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"}   
+  end
 
   def send_welcome_email 
     WelcomeMailer.welcome_email(self).deliver
