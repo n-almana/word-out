@@ -14,7 +14,7 @@ class Post < ActiveRecord::Base
 
   		includes(:user).
   		references(:user).
-  		where("posts.title LIKE ? OR posts.text LIKE ? OR users.displayname LIKE ?", search, search, search) 
+  		where("posts.title ILIKE ? OR posts.text LIKE ? OR users.displayname ILIKE ?", search, search, search) 
 	end
 
 	def score 

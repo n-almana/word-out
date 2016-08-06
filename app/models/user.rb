@@ -27,9 +27,9 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/ 
 
 def s3_credentials     
-  {:bucket => "xxx",     
-    :access_key_id => "xxx",     
-    :secret_access_key => "xxx"}   
+  {:bucket => "wordoutbucket",     
+    :access_key_id => "AKIAJRN4NDNRXO4JX54Q",     
+    :secret_access_key => "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"}   
   end
 
   def send_welcome_email 
@@ -41,7 +41,7 @@ def s3_credentials
 	end
 
     def self.search(search)
-      where("email LIKE ?", "%#{search}%") 
+      where("email ILIKE ?", "%#{search}%") 
   end
 
 end
