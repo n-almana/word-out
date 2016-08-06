@@ -32,10 +32,6 @@ def s3_credentials
     :secret_access_key => "GcLCFeNzTn9trC5Fs77N0J7w5qOYhfshpdBrpJJA"}   
   end
 
-  def send_welcome_email 
-    WelcomeMailer.welcome_email(self).deliver
-  end 
-
 	def follows?(user)
 		followed_users.include?(user)
 	end
