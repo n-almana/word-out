@@ -16,8 +16,6 @@ class User < ActiveRecord::Base
 
 	has_many(:followed_posts, through: :followed_users, source: :posts)
 
-  after_create(:send_welcome_email)
-
   has_attached_file :avatar, 
         :styles => { :medium => "300x300>", :thumb => "100x100#" }, 
         :default_url => "/assets/:style/missing.png", 
