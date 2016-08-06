@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 
   has_attached_file(:avatar, 
         styles: {medium: '300x300>', thumb: '100x100>'}, 
-        default_url: "/assets/:style/missing.png", 
+        default_url: ':style/missing.png', 
         storage: :s3,   
         s3_credentials: Proc.new { |a| a.instance.s3_credentials })
 
