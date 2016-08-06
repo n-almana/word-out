@@ -8,6 +8,8 @@
 	<% end %>
 </div> 
 
+<%= render('indextoggle') %> 
+
 <div id="main"> 
 	<% if @posts.present? %>
 	  <%= render @posts %>
@@ -15,4 +17,3 @@
 	  <p>There are no poems or poets containing the term(s) <%= params[:search] %>.</p>
 	<% end %>
 </div> 
-

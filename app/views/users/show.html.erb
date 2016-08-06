@@ -11,4 +11,9 @@
 
 <h3> <%= @user.posts.count %> Published Poems </h3> 
 
-<%= render(@user.posts) %>
+
+<%= link_to('Add New Poem', new_post_path, :class => "btn btn-default") %>
+
+<p> 
+	<%= render(@user.posts) %>
+</p> 
