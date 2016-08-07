@@ -5,7 +5,7 @@
 	<li> <%= link_to(post.title_and_author, post) %>
 	<% if post.user == current_user %>
 		<%= edit_post_link(post) %>
-		<%= link_to('Delete', post, method: :delete) %>
+		<%= link_to('Delete', post, method: :delete, :class => "btn btn-default") %>
 	<% end %>
 	</li>
 </ul> 

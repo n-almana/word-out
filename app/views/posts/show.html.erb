@@ -4,9 +4,9 @@
 <p> By: <%= @post.user.displayname %> </p> 
 <p> 
 <% if current_user.liked?(@post) %>
-		<%= button_to('Un-Heart', unheart_post_path(@post), method: :put) %>
+		<%= button_to('Un-Heart', unheart_post_path(@post), method: :put, :class => "btn btn-default") %>
       <% else %>
-        <%= button_to('Heart', heart_post_path(@post), method: :put) %>
+        <%= button_to('Heart', heart_post_path(@post), method: :put, :class => "btn btn-default") %>
       <% end %>
 </p> 
 <p> This poem has <%= @post.get_upvotes.size %> hearts! </p> 
