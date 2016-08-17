@@ -24,8 +24,8 @@ class User < ActiveRecord::Base
 
   def s3_credentials     
     {bucket: 'wordoutbucket',     
-    access_key_id: 'AKIAIKXD4XRHBRXBMHRQ',     
-    secret_access_key: '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'}   
+    access_key_id: 'xx',     
+    secret_access_key: 'xx'}   
   end
 
   validates_attachment_content_type(:avatar, content_type: /\Aimage\/.*\Z/)
