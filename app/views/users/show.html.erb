@@ -6,7 +6,9 @@
 		<p> You are following <%= @user.follows.count %> poets </p> 
 		<p> <%= @user.followings.count %> poets are following you </p> 
 	</div>
-	<%= render('shared/avatar') %> 
+
+	<%= render('shared/avatar', f: f) %>
+	
 </div>
 
 <h3> <%= @user.posts.count %> Published Poems </h3> 
