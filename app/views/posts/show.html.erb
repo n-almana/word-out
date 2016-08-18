@@ -11,5 +11,11 @@
 </p> 
 <p> This poem has <%= @post.get_upvotes.size %> hearts! </p> 
 <p> 
+<% if @post.user == current_user %>
+		<%= edit_post_link(@post) %>
+		<%= link_to('Delete', @post, method: :delete, :class => "btn btn-default") %>
+	<% end %> 
+</p> 
+<p> 
 <%= link_to "Back", :back %>
 </p> 
