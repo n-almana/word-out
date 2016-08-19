@@ -4,12 +4,12 @@
 <p> By: <%= @post.user.displayname %> </p> 
 <p> 
 <% if current_user.liked?(@post) %>
-<button type="button" class="btn btn-default btn-lg">
+<button type="button" class="btn btn-default">
 <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
 		<%= link_to('Un-Heart', unheart_post_path(@post), method: :put) %>
 	</button> 
       <% else %>
-      <button type="button" class="btn btn-default btn-lg">
+      <button type="button" class="btn btn-default">
       	<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
         <%= link_to('Heart', heart_post_path(@post), method: :put) %>
         	</button> 
