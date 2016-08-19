@@ -17,7 +17,7 @@ class FollowsController < ApplicationController
 	end
 
 	def redirect_to_and_set_flash(action)
-		super(users_url, "You #{action} #{followed_user.email}")
+		super(users_url, "You #{action} #{followed_user.displayname}")
 	end
 
 end
