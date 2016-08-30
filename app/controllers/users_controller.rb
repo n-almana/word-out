@@ -12,6 +12,10 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 	end
 
+	def update 
+		current_user.update(params[:user].permit(:avatar)) 
+	end 
+
 	def destroy
 		current_user.destroy
 		redirect_to(posts_url)
