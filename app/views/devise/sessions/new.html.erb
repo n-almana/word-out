@@ -1,3 +1,12 @@
+<div id = "intro"> 
+  <h3> WordOut </h3> 
+  <p> 
+    WordOut is a platform for poets to share their work without criticism or judgment. </br> 
+    Feel free to write about gender, race, social issues, mental/personal health, identity, anything at all. </br> 
+    This is a safe space. One love. 
+  </p> 
+</div> 
+
 <div id="login"> 
 <h2>Log in</h2>
 
@@ -20,9 +29,11 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", :class => "btn btn-default" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
 </div> 
+
