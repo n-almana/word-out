@@ -11,7 +11,13 @@
 
 </div>
 
-<h3> <%= @user.posts.count %> Published Poems </h3> 
+<div> 
+	<% if @user.posts.count == 0 %>
+	  <p> <%= "Aww.. it looks like this poet hasn't published any poems yet."  %> </p> 
+	<% else %>
+	  <h3> <%= @user.posts.count %> Published Poems </h3> 
+	<% end %>
+</div> 
 
 <p> 
 	<%= link_to('Add New Poem', new_post_path, :class => "btn btn-default") %>
