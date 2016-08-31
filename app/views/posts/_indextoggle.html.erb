@@ -2,7 +2,9 @@
   <%= link_to('All Poems', posts_url, :class => "btn btn-default") %>
   <%= link_to('Poems by Followed Poets', following_posts_url, :class => "btn btn-default") %>
   <%= link_to('All Poets', users_url, :class => "btn btn-default") %>
-  	<%= link_to('New', new_post_url, :class => "btn btn-default") %> 
-
+  <button type="button" class="btn btn-default">
+  	<span class="glyphicon glyphicon-plus"> </span>
+  	<%= link_to('New', new_post_url) %> 
+  </button> 
 
 </div>

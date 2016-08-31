@@ -7,7 +7,10 @@
 		<p> <%= @user.followings.count %> poets are following you </p> 
 	</div>
 
-	<%= render('shared/avatar') %>
+<% if @user == current_user %>
+<%= render('shared/avatar') %>
+	<% end %> 
+
 
 </div>
 
@@ -20,7 +23,9 @@
 </div> 
 
 <p> 
+	<% if @user == current_user %>
 	<%= link_to('Add New Poem', new_post_path, :class => "btn btn-default") %>
+	<% end %> 
 </p> 
 
 </br> 
