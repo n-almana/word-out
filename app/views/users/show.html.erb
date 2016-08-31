@@ -1,10 +1,18 @@
 <h1> <%= @user.displayname %>'s Profile </h1> 
 
 <div id="right"> 
-	<%= image_tag(current_user.avatar.url(:medium)) %>
+	<%= image_tag(@user.avatar.url(:medium)) %>
 	<div id="stats">
+		<% if @user == current_user %>
 		<p> You are following <%= @user.follows.count %> poets </p> 
 		<p> <%= @user.followings.count %> poets are following you </p> 
+
+		<% else %> 
+
+		<p> <%= @user.displayname %> is following <%= @user.follows.count %> poets </p> 
+		<p> <%= @user.followings.count %> poets are following <%= @user.displayname %> </p> 
+
+		<% end %> 
 	</div>
 
 <% if @user == current_user %>
@@ -31,4 +39,3 @@
 </br> 
 
 <%= render(@user.posts) %>
-
