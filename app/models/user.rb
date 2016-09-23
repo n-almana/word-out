@@ -18,14 +18,16 @@ class User < ActiveRecord::Base
 
   has_attached_file(:avatar, 
         styles: {medium: '300x300>', thumb: '100x100>'}, 
-        default_url: ':style/missing.png', 
+        default_url: ':styles/missing.png', 
         storage: :s3,   
         s3_credentials: Proc.new { |a| a.instance.s3_credentials })
 
-  def s3_credentials     
-    {bucket: 'wordoutbucket',     
-    access_key_id: 'AKIAJOBIV3SGUIK2Y22A',     
-    secret_access_key: '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'}   
+  def s3_credentials
+    {bucket: 'wordoutbucket',
+    s3_region: ENV['AWS_REGION'],
+    s3_host_name: "s3-#{ENV['AWS_REGION']}.amazonaws.com",
+    access_key_id: ENV['AWS_ACCESS_KEY_ID'],     
+    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']}.tap{|x|puts '#'*100 ; puts x.inspect} 
   end
 
   validates_attachment_content_type(:avatar, content_type: /\Aimage\/.*\Z/)

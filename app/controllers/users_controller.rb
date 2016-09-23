@@ -12,8 +12,10 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 	end
 
-	def update 
+	def update
+		@user = current_user
 		current_user.update(params[:user].permit(:avatar)) 
+		redirect_to(@user)
 	end 
 
 	def destroy
